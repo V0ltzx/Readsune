@@ -1,10 +1,15 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import '../styles/CardLivro.css'
 import { ArrowRight } from 'lucide-react'
+import ModalDetalhes from './ModalDetalhes';
 
 export default function CardLivro( {livros} ){
 
+    const [modalAberto, setModalAberto] = useState(false);
+
     return (
+
+        <>
         
         <div className='card'>
             <div  className='capa'>
@@ -13,19 +18,23 @@ export default function CardLivro( {livros} ){
             
             <div className='info-livro'>
                 
-                <h1 className='titulo-card'>{ livros.titulo}</h1>
-                <p className='titulo-menor-card'>ISBN: {livros.isbn}</p>
+                <h1 className='titulo-card'>{ livros.titulo }</h1>
+                <p className='titulo-menor-card'>ISBN: { livros.isbn }</p>
 
-                <div className='card-detalhes'>
-                    <a href="" >Ver Detalhes</a> 
-                    <ArrowRight/>
+                <div>
+                    <button className='detalhes-button' onClick={() => setModalAberto(true)}>
+                        Ver detalhes <ArrowRight/>
+                    </button> 
                 </div>
                 
             </div>
 
-            
-            
-            
         </div>
+
+        {modalAberto &&(
+            <ModalDetalhes onClose={() => setModalAberto(false)}/>
+        )}
+
+        </>
     )
 }

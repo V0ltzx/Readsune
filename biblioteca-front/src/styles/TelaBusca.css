@@ -20,3 +20,19 @@
     font-weight: 600;
 }
 
+.area-titulo-botao{
+    display: flex;
+    justify-content: space-between;
+    align-items: ceneter;
+}
+
+.botao-add{
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border-radius: 4rem;
+    align-items: center;
+    
+}
+

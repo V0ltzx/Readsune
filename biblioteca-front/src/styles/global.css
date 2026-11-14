@@ -12,8 +12,10 @@
   --cor-neutra: #EAFAFB;
   --cor-palido: #F1F1F1;
   --cor-branco: #FFFFFF;
+  --cor-vermelho: #AC3434;
   --cor-texto-mutado: rgba(29, 25, 22, 0.6);
   --cor-primaria-soft: rgba(167, 49, 65, 0.1);
+
 
   /* Fonte */
   --font-main: 'Inter', sans-serif;

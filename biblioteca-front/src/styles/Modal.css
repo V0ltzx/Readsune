@@ -1,0 +1,147 @@
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(0.5rem);
+}
+
+.modal-conteudo {
+    display: grid;
+    width: 46rem;
+    min-height: 28rem;
+    height: auto;
+    padding: 1.5rem;
+    background-color: var(--cor-escura);
+    border-radius: 1.5rem;
+    gap: 0.8rem;
+    
+}
+
+.modal-info {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.modal-topo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.espaco{
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+}
+
+.titulo-topo{
+    color: var(--cor-primaria);
+    font-size: 0.5rem;
+    font-weight: 600;
+}
+.titulo-livro{
+    color: var(--cor-branco);
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.titulo-autor{
+    color: var(--cor-palido);
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+.titulos-menores{
+    color: var(--cor-palido);
+    font-size: 0.8rem;
+    font-weight: 100;
+}
+
+.linha{
+    width: 100%;
+    border-bottom: 0.001rem solid var(--cor-palido);
+    opacity: 0.2; 
+}
+
+
+.sinopse{
+    color: var(--cor-branco);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.detalhe-livro-titulo{
+    display: flex;
+    gap: 7rem;
+    color: var(--cor-palido);
+    font-size: 0.8rem;
+    font-weight: 100;
+
+}
+
+.detalhe-livro-conteudo{
+    display: flex;
+    gap: 3.5rem;
+    color: var(--cor-branco);
+    font-weight: 300;
+
+}
+
+.detalhe-livro-sinopse{
+    color: var(--cor-branco);
+    font-weight: 300;
+    font-size: 0.7rem;
+}
+
+
+.modal-info img {
+    width: 10rem;
+    height: auto;
+    object-fit: contain;
+}
+
+.botao-topo{
+    position: flex;
+    color: var(--cor-branco);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.4rem 0.4rem;
+    border-radius: 5rem;
+}
+
+.area-botao{
+    display: flex;
+    gap: 0.5rem;
+    
+}
+
+.botao-excluir{
+    display: flex;
+    font-size: 1rem;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-palido);
+    color: var(--cor-vermelho);
+    border-radius: 0.5rem;
+    padding: 0.4rem 2%;
+    gap: 0.5rem;
+}
+
+.botao-emprestar{
+    display: flex;
+    font-size: 1rem;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border-radius: 0.5rem;
+    padding: 0.4rem 2%;
+    gap: 0.5rem;
+}
+

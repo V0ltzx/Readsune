@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/TelaBusca.css'
 import CardLivro from '../components/CardLivro'
@@ -35,12 +36,17 @@ export default function TelaBusca(){
         <div className='tela'>
             <div>
                 <p className='titulo-menor-topo'>ACERVO DE LIVROS</p>
-                <h1 className='titulo'>
+                <div className='area-titulo-botao'>
+                    <h1 className='titulo'>
                     {!busca.trim() ? 'Biblioteca' 
                         : livroFiltrado.length > 0 
                             ? 'Resultado da pesquisa' 
                                 : 'Nenhum livro encontrado'}
-                </h1>
+                    </h1>
+
+                    <button className='botao-add'><Plus/></button>
+                </div>
+                
                 <p className='texto-menor'>
                     { livroFiltrado.length + ' livros encontrados' }
                 </p>
