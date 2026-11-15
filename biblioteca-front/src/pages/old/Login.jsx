@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import '../../App.css'
 
@@ -12,57 +13,18 @@ function Login() {
   const [email1, setEmail1] = useState('');
   const [password1, setPassword1] = useState('');
 
-  async function Entrar(password, email) {
+  const {login, logout, registrar} = useAuth();
 
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await res.json();
-    alert(data.mensagem);
+  async function Registro(){
+    await registrar(nome, email1, password1);
+  }
 
-
-    localStorage.setItem('token', data.token);
-
-    navigate('/livros');
-
+  async function Entrar() {
+    await login(email, password);
   }
 
 
 
-  async function Registrar(nome, senha, email) {
-
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/registrar`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome, email, senha }),
-    });
-    const data = await res.json();
-    alert(data.mensagem);
-
-
-    localStorage.setItem('token', data.token);
-
-    navigate('/livros');
-
-  }
-
-
-
-  async function Logout() {
-    const token = localStorage.getItem('token');
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-    });
-
-    alert(data.message);
-    localStorage.removeItem('token');
-  }
 
   return (
     <>
@@ -87,7 +49,7 @@ function Login() {
 
         </div>
 
-        <button className="counter" onClick={ () => Registrar(nome, password1, email1) }>
+        <button className="counter" onClick={ () => Registro() }>
           Registro
         </button>
 
@@ -115,7 +77,7 @@ function Login() {
           Login
         </button>
 
-        <button className="counter" onClick={ () => Logout() }>
+        <button className="counter" onClick={ () => logout() }>
           Logout
         </button>
 

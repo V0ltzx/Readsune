@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 import { Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/TelaBusca.css'
@@ -12,6 +13,7 @@ export default function TelaBusca(){
     const token = localStorage.getItem('token');
     const [livros, setLivros] = useState([]);
     const { busca } = useContext(BuscaContext)
+    const {usuario} = useAuth();
 
     useEffect(() => {
 
@@ -36,8 +38,12 @@ export default function TelaBusca(){
                     <h1 className='titulo'>
                         {busca ? 'Resultados da pesquisa' : 'Veja os livros da nossa biblioteca'}
                     </h1>
+                    {usuario?.perfil  === 'bibliotecario' && (
+                            <button className='botao-add'><Plus/></button>
+                        ) 
+                    }
 
-                    <button className='botao-add'><Plus/></button>
+                    
                 </div>
                 
                 <p className='texto-menor'>

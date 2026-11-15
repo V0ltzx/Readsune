@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Login from './pages/old/Login';
 import LivroAdd from './pages/old/livro_add';
 import TelaBusca from './pages/TelaBusca';
@@ -6,6 +7,7 @@ import TelaLateral from './components/TelaLateral';
  
 export default function App() {
   return (
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/livros" 
@@ -19,5 +21,7 @@ export default function App() {
         
         <Route path="/livro_add" element={<LivroAdd />} />
       </Routes>
+    </AuthProvider>
+      
   );
 }
