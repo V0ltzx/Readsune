@@ -1,0 +1,71 @@
+.card-emprestimo{
+    display: flex;
+    border: 1px solid #000;
+    align-items: center;
+    border-radius: 0.8rem;
+    height: 10rem;
+    padding: 1rem;
+}
+
+.card-detalhes-emprestimo{ /*Div principal*/
+    display: grid;
+    gap: 2rem;
+}
+
+.card-data-emprestimo-pai{ /*dentro da div de cima*/
+    display: flex;
+    gap: 4rem;
+}
+
+.card-data-emprestimo{ /*dentro da div pai*/
+    display: flex;
+    flex-direction: column;
+}
+
+.card-acoes-emprestimo{
+    margin-left: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.capa-emprestimo{
+    height: 100%;
+}
+.capa-livro-emprestimo{
+    height: 100%;
+}
+
+.titulo-card-emprestimo{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.titulo-data-emprestimo{
+    color: var(--cor-texto-mutado);
+    font-size: 0.8rem;
+}
+.texto-data-emprestimo{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.texto-fora-prazo{
+    background-color: var(--cor-vermelho-claro);
+    color: var(--cor-vermelho);
+    border-radius: 2rem;
+    padding: 0rem 1rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.texto-dentro-prazo{
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border-radius: 2rem;
+    padding: 0rem 1rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+}

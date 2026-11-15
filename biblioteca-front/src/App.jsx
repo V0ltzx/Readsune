@@ -3,7 +3,9 @@ import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Login from './pages/old/Login';
 import LivroAdd from './pages/old/livro_add';
 import TelaBusca from './pages/TelaBusca';
+import Emprestimo from './pages/Emprestimos'
 import TelaLateral from './components/TelaLateral';
+
  
 export default function App() {
   return (
@@ -18,6 +20,14 @@ export default function App() {
             
           } 
         />
+
+        <Route path='emprestimos'
+          element={
+            <TelaLateral>
+              <Emprestimo/>
+            </TelaLateral>
+            }
+          />
         
         <Route path="/livro_add" element={<LivroAdd />} />
       </Routes>
