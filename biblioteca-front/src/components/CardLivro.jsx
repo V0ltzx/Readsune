@@ -3,7 +3,7 @@ import '../styles/CardLivro.css'
 import { ArrowRight } from 'lucide-react'
 import ModalDetalhes from './ModalDetalhes';
 
-export default function CardLivro( {livros} ){
+export default function CardLivro( {livro} ){
 
     const [modalAberto, setModalAberto] = useState(false);
 
@@ -13,13 +13,13 @@ export default function CardLivro( {livros} ){
         
         <div className='card'>
             <div  className='capa'>
-                <img src={livros.capa}  className='imagem'/>
+                <img src={livro.capa}  className='imagem'/>
             </div>
             
             <div className='info-livro'>
                 
-                <h1 className='titulo-card'>{ livros.titulo }</h1>
-                <p className='titulo-menor-card'>ISBN: { livros.isbn }</p>
+                <h1 className='titulo-card'>{ livro.titulo }</h1>
+                <p className='titulo-menor-card'>ISBN: { livro.isbn }</p>
 
                 <div>
                     <button className='detalhes-button' onClick={() => setModalAberto(true)}>
@@ -32,7 +32,7 @@ export default function CardLivro( {livros} ){
         </div>
 
         {modalAberto &&(
-            <ModalDetalhes onClose={() => setModalAberto(false)}/>
+            <ModalDetalhes livro={livro} onClose={() => setModalAberto(false)}/>
         )}
 
         </>

@@ -13,6 +13,7 @@
   --cor-palido: #F1F1F1;
   --cor-branco: #FFFFFF;
   --cor-vermelho: #AC3434;
+  --cor-vermelho-claro: #FFF0EE;
   --cor-texto-mutado: rgba(29, 25, 22, 0.6);
   --cor-primaria-soft: rgba(167, 49, 65, 0.1);
 
@@ -98,7 +99,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn--primaria:hover {
-  background-color: #1eb4ce;
+  background-color: var(--cor-branco);
+  color: var(--cor-primaria);
 }
 
 .btn--ciano {

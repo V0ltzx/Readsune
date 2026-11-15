@@ -13,10 +13,6 @@ export default function TelaBusca(){
     const [livros, setLivros] = useState([]);
     const { busca } = useContext(BuscaContext)
 
-    const livroFiltrado = livros.filter((livro) => { /*Variável que vai filtrar os livros */
-        return livro.titulo.toLowerCase().includes(busca.toLowerCase())
-    });
-
     useEffect(() => {
 
         async function BuscarLivros() {
@@ -38,24 +34,22 @@ export default function TelaBusca(){
                 <p className='titulo-menor-topo'>ACERVO DE LIVROS</p>
                 <div className='area-titulo-botao'>
                     <h1 className='titulo'>
-                    {!busca.trim() ? 'Biblioteca' 
-                        : livroFiltrado.length > 0 
-                            ? 'Resultado da pesquisa' 
-                                : 'Nenhum livro encontrado'}
+                        {busca ? 'Resultados da pesquisa' : 'Veja os livros da nossa biblioteca'}
                     </h1>
 
                     <button className='botao-add'><Plus/></button>
                 </div>
                 
                 <p className='texto-menor'>
-                    { livroFiltrado.length + ' livros encontrados' }
+                    
+                    {busca ? `${livros.length} resultados para a pesquisa: "${busca}"` : `Possuímos ${livros.length} livros no nosso catálogo.`}
                 </p>
             </div>
             
             
-            {livroFiltrado.map((livros) => (
+            {livros.map((livro) => (
                     
-                    <CardLivro  key={livros.livro_id} livros = {livros}/>
+                    <CardLivro  key={livro.livro_id} livro = {livro}/>
                 ))}
             
 

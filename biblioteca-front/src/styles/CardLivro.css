@@ -4,7 +4,8 @@
     background-color: var(--cor-escura);
     border-radius: 0.8rem;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
+    padding: 0.5rem;
 }
 
 .titulo-card{
@@ -42,7 +43,7 @@
 
 
 .capa{
-    margin-left: 1.5rem;
+    margin-left: 2rem;
     justify-content: center;
     width: 15%;
     height: 90%;
@@ -50,5 +51,6 @@
 
 .imagem{
     height: 100%;
+    max-width: 6.5;
 }
 
