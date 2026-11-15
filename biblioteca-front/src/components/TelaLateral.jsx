@@ -40,7 +40,7 @@ export default function TelaLateral({children}){
                             <input className='barra-pesquisa__input' type="search" placeholder='Busque por ISBN ou titulo' value={busca} onChange={handleBuscaChange}></input>
                         </div>
 
-                        <button className={`btn ${location.pathname === "/telabusca" ? "btn__ativo" : "btn__inativo"} btn--block`} onClick={() => navigate("/telabusca")}>
+                        <button className={`btn ${location.pathname === "/livros" ? "btn__ativo" : "btn__inativo"} btn--block`} onClick={() => navigate("/livros")}>
                             <LibraryBig /> Biblioteca
                         </button>
 
