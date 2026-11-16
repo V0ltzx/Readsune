@@ -4,12 +4,13 @@ import Login from './pages/old/Login';
 import LivroAdd from './pages/old/livro_add';
 import TelaBusca from './pages/TelaBusca';
 import TelaLateral from './components/TelaLateral';
+import TelaLogin from './pages/TelaLogin';
  
 export default function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<TelaLogin />} />
         <Route path="/livros" 
           element={
             <TelaLateral>
