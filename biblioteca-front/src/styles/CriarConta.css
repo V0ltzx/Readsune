@@ -2,31 +2,25 @@
   display: grid;
   grid-template-columns: 1.3fr 2fr ;
   width: 100%;
-  height: 100vh;
   background-color: var(--cor-neutra);
 
-
-  
 }
 
 /* No mobile, as seções são empilhadas verticalmente */
 .split-screen__left {
-  background-color: var(--cor-neutra);
+  /* background-color: var(--cor-neutra); */
   flex: 1; 
   height: 100%;
   padding: 0; 
 }
 
 .split-screen__right {
-  background-color: var(--cor-neutra);
+  /* background-color: var(--cor-neutra); */
   display: flex;
   flex-direction: column;
   margin-left: 5rem;
   justify-content: center;
-  gap: 2rem;
-  background-color: var(--cor-neutra);
-
-  
+  gap: 2rem;  
 }
 
 /* Em telas maiores, elas são exibidas lado a lado */

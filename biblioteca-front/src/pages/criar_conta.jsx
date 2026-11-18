@@ -26,7 +26,7 @@ export default   function CriarConta(){
         setErro(null);
     try{
         await registrar(nome, email, senha);
-        navigate('/home');
+        navigate('/livros');
 
     } catch (err) {
         setErro("E-mail ou senha inválidos.");
