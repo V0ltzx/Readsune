@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import interrogacao from '../assets/interrogacao.jpg'
 import api from '../api/client';
 
-export default function ModalDetalhes({ livro, onClose }) {
+export default function ModalDetalhes({ livro, onClose, onEmprestar }) {
 
     const {usuario} = useAuth();
     const [emprestando, setEmprestando] = useState(false);
@@ -22,6 +22,7 @@ export default function ModalDetalhes({ livro, onClose }) {
             console.log(err?.response?.data?.message ?? "Não foi possível emprestar o livro");
         } finally{
             setEmprestando(false);
+            onEmprestar();
 
         }
     }
@@ -91,15 +92,13 @@ export default function ModalDetalhes({ livro, onClose }) {
 
                     {!livro.emprestado ? (
                         <button className='btn btn--primaria' onClick={usuario ? handleEmprestar : () => Navigate('/login')}>
-                            <BookOpen/>Emprestar
+                            <BookOpen/>{emprestando ? 'Emprestando...' : 'Emprestar'}
                         </button>
                     ) : (
                         <button className='btn botao-excluir'>
                             <Ban/>Indisponível
                         </button>
-                    )
-                
-                    }
+                    )}
                     
                     
                     {usuario?.perfil === 'bibliotecario' && (
