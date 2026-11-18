@@ -1,5 +1,6 @@
-.tela-emprestimos{
+.tela-emprestimo{
     display: grid;
+    gap: 2rem;
 }
 
 .titulo-topo-emprestimo{

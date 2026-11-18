@@ -5,29 +5,40 @@ import api from "../api/client"
 
 export default function Emprestimos(){
 
-    // const [emprestimos, setEmprestimos] = useState([]);
+    const [emprestimos, setEmprestimos] = useState([]);
 
-    // useEffect (() => {
-    //     buscarEmprestimos();
-    // }, []);
+    useEffect (() => {
+        buscarEmprestimos();
+    }, []);
 
-    // async function buscarEmprestimos(){
-    //     api.get('/emprestimos')
-    //     .then((res) => setEmprestimos(res.data.data));
-    // }
+    async function buscarEmprestimos(){
+        await api.get('/emprestimos')
+        .then((res) => {setEmprestimos(res.data.data); console.log(res.data.data);});
+        
+  
+    }
 
 
     return(
         <div className="tela-emprestimo">
-            <p className="titulo-topo-emprestimo">MEUS EMPRÉSTIMOS</p>
 
-            <h1 className="titulo-emprestimo">Meus Empréstimos</h1>
+            <div>
+                <p className="titulo-topo-emprestimo">MEUS EMPRÉSTIMOS</p>
+                <h1 className="titulo-emprestimo">Meus Empréstimos</h1>
+                <p className="texto-menor-emprestimo">Acompanhe seu histórico de leituras e os prazos de devolução</p>
+            </div>
+            
 
-            <p className="texto-menor-emprestimo">Acompanhe seu histórico de leituras e os prazos de devolução</p>
+            
+            <div className='tela-emprestimo'>
+                {emprestimos.map((emprestimo) => (
+                    <CardEmprestimo emprestimo={emprestimo} key={emprestimo.emprestimo_id} onDevolver={buscarEmprestimos}/>
 
-            <br /><br />
+                ))}
 
-            <CardEmprestimo/>
+            </div>
+            
+            
 
 
         </div>
