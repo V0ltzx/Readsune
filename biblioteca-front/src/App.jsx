@@ -5,7 +5,7 @@ import LivroAdd from './pages/old/livro_add';
 import TelaBusca from './pages/TelaBusca';
 import Emprestimo from './pages/Emprestimos'
 import TelaLateral from './components/TelaLateral';
-
+import CriarConta from './pages/criar_conta';
  
 export default function App() {
   return (
@@ -28,7 +28,7 @@ export default function App() {
             </TelaLateral>
             }
           />
-        
+        <Route path="/cadastro" element={<CriarConta />} />
         <Route path="/livro_add" element={<LivroAdd />} />
       </Routes>
     </AuthProvider>
