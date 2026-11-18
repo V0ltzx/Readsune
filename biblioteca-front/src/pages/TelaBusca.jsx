@@ -11,6 +11,7 @@ export default function TelaBusca(){
     const [livros, setLivros] = useState([]);
     const { busca } = useContext(BuscaContext)
     const {usuario} = useAuth();
+    
 
 
     useEffect(() => {
@@ -22,6 +23,8 @@ export default function TelaBusca(){
         api.get("/livros", {params: {busca}})
         .then((res) => setLivros(res.data.data));
     }
+
+
 
 
     return (
@@ -49,7 +52,7 @@ export default function TelaBusca(){
             
             {livros.map((livro) => (
                     
-                    <CardLivro  key={livro.livro_id} livro = {livro}/>
+                    <CardLivro  key={livro.livro_id} livro = {livro} onEmprestar={BuscarLivros}/>
                 ))}
             
 
