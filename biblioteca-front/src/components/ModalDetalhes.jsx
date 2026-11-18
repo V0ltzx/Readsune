@@ -10,6 +10,7 @@ export default function ModalDetalhes({ livro, onClose, onEmprestar }) {
 
     const {usuario} = useAuth();
     const [emprestando, setEmprestando] = useState(false);
+    const [excluindo, setExcluindo] = useState(false);
     const Navigate = useNavigate();
 
     async function handleEmprestar(e){
@@ -24,6 +25,19 @@ export default function ModalDetalhes({ livro, onClose, onEmprestar }) {
             setEmprestando(false);
             onEmprestar();
 
+        }
+    }
+
+    async function handleExcluir(e){
+        e.preventDefault();
+        setExcluindo(true);
+        try{
+            api.delete(`/livros/${livro.livro_id}`);
+        } catch(err){
+            console.log(err?.message ?? 'Não foi possível excluir o livro');
+        } finally{
+            setExcluindo(false);
+            onClose()
         }
     }
 
@@ -95,14 +109,14 @@ export default function ModalDetalhes({ livro, onClose, onEmprestar }) {
                             <BookOpen/>{emprestando ? 'Emprestando...' : 'Emprestar'}
                         </button>
                     ) : (
-                        <button className='btn botao-excluir'>
+                        <button className='btn botao-excluir botao-excluir-indisponivel'>
                             <Ban/>Indisponível
                         </button>
                     )}
                     
                     
                     {usuario?.perfil === 'bibliotecario' && (
-                        <button className='btn botao-excluir'><Trash/>Excluir</button>
+                        <button className='btn botao-excluir' onClick={handleExcluir}><Trash/>{excluindo ? 'Excluindo...' : 'Excluir'}</button>
                     )}
                     
 
