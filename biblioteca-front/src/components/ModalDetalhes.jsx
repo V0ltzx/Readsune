@@ -105,7 +105,7 @@ export default function ModalDetalhes({ livro, onClose, onEmprestar }) {
                 <div className='area-botao'>
 
                     {!livro.emprestado ? (
-                        <button className='btn btn--primaria' onClick={usuario ? handleEmprestar : () => Navigate('/login')}>
+                        <button className='btn btn--primaria' onClick={usuario ? handleEmprestar : () => Navigate('/')}>
                             <BookOpen/>{emprestando ? 'Emprestando...' : 'Emprestar'}
                         </button>
                     ) : (
