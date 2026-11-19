@@ -39,9 +39,7 @@ export default function TelaLogin() {
 
             <div className='login-lado-form'>
                 <form className='login-form' onSubmit={Entrar}>
-                     <div className='logo-area'>
                         <img src={Logo} alt='ReadSune' className='login-logo' />
-                     </div>
                 
                     <div>
                         <h1 className='login-titulo'>Bem-vindo de volta</h1>

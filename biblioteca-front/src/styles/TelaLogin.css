@@ -48,13 +48,12 @@
 }
 
 .login-logo {
-    height: 10rem;
+    height: 3rem;
     width: auto;
 }
 
 .logo-area{
     justify-content: center;
-    display: flex;
 }
 
 .login-titulo {
