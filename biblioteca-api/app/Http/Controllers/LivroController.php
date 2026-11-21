@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreLivroRequest;
 use App\Http\Requests\UpdateLivroRequest;
 use App\Models\Livro;
+use App\Models\Autor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class LivroController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Livro::with('autor');
+        $query = Livro::with(['autor', 'emprestado']);
 
         if ($busca = $request->query('busca')) {
             $query->where('titulo', 'like', "%{$busca}%");
@@ -28,8 +30,20 @@ class LivroController extends Controller
 
     public function store(StoreLivroRequest $request)
     {
-        $livro = Livro::create($request->validated());
-        
+        $livroDados = $request->validated();
+
+        $autor = Autor::firstOrCreate(
+            ['nome' => $livroDados['autor']],
+            ['biografia' => $livroDados['autor_bio'] ?? null] 
+        );
+
+        unset($livroDados['autor'], $livroDados['autor_bio']);
+
+        $livro = Livro::create([
+            ...$livroDados,
+            'autor_id' => $autor->autor_id
+        ]);
+
         return response()->json($livro, 201);
     }
 

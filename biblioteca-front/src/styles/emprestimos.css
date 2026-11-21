@@ -1,0 +1,21 @@
+.tela-emprestimo{
+    display: grid;
+    gap: 2rem;
+}
+
+.titulo-topo-emprestimo{
+    font-size: 0.8rem;
+    color: var(--cor-ciano);
+    font-weight: 600;
+}
+
+.titulo-emprestimo{
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.texto-menor-emprestimo{
+    color: var(--cor-texto-mutado);
+    font-size: 0.8rem;
+}
