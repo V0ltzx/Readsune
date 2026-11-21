@@ -1,17 +1,18 @@
 import '../styles/TelaLateral.css'
-import { LibraryBig, BookCopy, Search, ChevronRight } from 'lucide-react'
+import { LibraryBig, BookCopy, Search, ChevronRight, House, Star } from 'lucide-react'
 import Logo from '../assets/Images/Logo.svg'
 import { useState, createContext } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
 import Avatar from '../assets/Images/Avatar.png'
+import { useAuth } from '../contexts/AuthContext';
 
 export const BuscaContext = createContext();
 
 export default function TelaLateral({children}){
-    const [ativo, setAtivo] = useState("livros");
     const [busca, setBusca] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
+    const { usuario, logout } = useAuth();
 
     function handleBuscaChange(e) {
         setBusca(e.target.value);
@@ -20,9 +21,9 @@ export default function TelaLateral({children}){
         }
     }
 
-    function Navegar(rota){
-        setAtivo(rota);
-        navigate("/" + rota);
+    async function deslogar(){
+        await logout();
+        navigate("/home");
     }
 
     return(
@@ -40,21 +41,40 @@ export default function TelaLateral({children}){
                             <input className='barra-pesquisa__input' type="search" placeholder='Busque por ISBN ou titulo' value={busca} onChange={handleBuscaChange}></input>
                         </div>
 
+                        <button className={`btn ${location.pathname === "/home" ? "btn__ativo" : "btn__inativo"} btn--block`} onClick={() => navigate("/home")}>
+                            <House /> Home
+                        </button>
+
                         <button className={`btn ${location.pathname === "/livros" ? "btn__ativo" : "btn__inativo"} btn--block`} onClick={() => navigate("/livros")}>
                             <LibraryBig /> Biblioteca
                         </button>
 
-                        <button className={`btn ${location.pathname === "/emprestimos" ? "btn__ativo" : "btn__inativo"} btn--block`} onClick={() => navigate("/emprestimos")}>
-                            <BookCopy /> Empréstimos
-                        </button>
+                        {usuario && (
+                            <button className={`btn ${location.pathname === "/emprestimos" ? "btn__ativo" : "btn__inativo"} btn--block`} onClick={() => navigate("/emprestimos")}>
+                                <BookCopy /> Empréstimos
+                            </button>
+                        )}
+                        
 
-                        <button className={`btn ${location.pathname === "perfil" ? "btn__ativo" : "btn__inativo"} btn-perfil btn--block `} onClick={() => navigate("/login")}>
+                        {usuario && (
+                            <button className={`btn btn__inativo btn-perfil btn--block `} onClick={() => deslogar()}>
                                 <div className='btn-perfil__avatar' >
                                     <img src={Avatar} />
                                 </div>
-                                (Implementar usuario)
-                            <ChevronRight className='btn-perfil__icon'/>
-                        </button>
+
+                                <div className='btn-perfil__text'>
+                                    <p className='btn-perfil__text-nome'>
+                                        {usuario.nome}
+                                        {usuario.perfil === 'bibliotecario' && (<Star size={16} fill='#155158'/>)}
+                                    </p>
+
+                                    <p>Sair da conta</p>
+                                </div>
+
+                                <ChevronRight className='btn-perfil__icon'/>
+                            </button>
+                        )}
+                        
                     </div>
                 </div>
 
