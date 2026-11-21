@@ -58,9 +58,9 @@ export default function TelaBusca(){
             
             {TelaAddAberto && (
                 <TelaAdicionarLivros
-                  onClose={() => setTelaAddAberto(false)}
-                     onSalvar={BuscarLivros}
-                 />
+                    onSalvar={() => BuscarLivros()}
+                    onClose={() => setTelaAddAberto(false)}
+                />
             )}
             
         </div>

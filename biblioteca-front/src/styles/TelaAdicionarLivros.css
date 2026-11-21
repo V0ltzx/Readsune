@@ -107,6 +107,7 @@
     transform: translateY(-50%);
     color: var(--cor-texto-mutado);
     pointer-events: none;
+    margin-left: 1rem;
 }
 
 .modal-add__capa {
@@ -160,7 +161,11 @@
 
 .modal-add__rodape {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+}
+
+.modal-add__rodape button{
+    margin-left: auto;
 }
 
 .modal-add__rodape .btn:disabled {
