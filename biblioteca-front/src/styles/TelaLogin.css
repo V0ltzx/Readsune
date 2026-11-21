@@ -1,7 +1,7 @@
 /* ---------- Grid ---------- */
 .login-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.3fr 2fr;
     min-height: 100vh;
 }
 
@@ -122,4 +122,17 @@
 .login-botao:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+.botao-home{
+  color: var(--cor-ciano);
+  font-weight: 800;
+  font-size: medium;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin-left: auto;
+  gap: 0.3rem;
 }

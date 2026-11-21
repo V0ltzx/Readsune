@@ -1,10 +1,10 @@
 import '../styles/TelaLogin.css'
 import { use, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff, ArrowLeft } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import Logo from '../assets/Images/ReadSuneLogo.svg'
-import ImagemLivrosLogin from '../assets/Images/ImagemLivrosLogin.jpg'
+import ImagemLivrosLogin from '../assets/Images/mikuconta.svg'
 import '../styles/TelaLogin.css'
 
 export default function TelaLogin() {
@@ -23,7 +23,7 @@ export default function TelaLogin() {
         setErro(null);
         try {
             await login(email, senha);
-            navigate('/livros');
+            navigate('/home');
         } catch(err){
             setErro(err?.response?.data?.erro ?? "E-mail ou senha inválidos")
         } finally {
@@ -43,6 +43,10 @@ export default function TelaLogin() {
 
             <div className='login-lado-form'>
                 <form className='login-form' onSubmit={Entrar}>
+                    <button className='botao-home' onClick={() => navigate('/home')}>
+                        <ArrowLeft />Vá até a página home 
+                    </button>
+
                         <img src={Logo} alt='ReadSune' className='login-logo' />
                 
                     <div>
@@ -92,7 +96,7 @@ export default function TelaLogin() {
                         {carregando ? 'Entrando...' : 'Entrar'}
                     </button>
 
-                    <button type='button' className='login-link' onClick={() => navigate('/registro')}>
+                    <button type='button' className='login-link' onClick={() => navigate('/cadastro')}>
                         Ainda não possui conta? Criar conta
                     </button>
 

@@ -1,17 +1,17 @@
 .split-screen {
   display: grid;
   grid-template-columns: 1.3fr 2fr ;
-  width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--cor-neutra);
 }
 
-/* No mobile, as seções são empilhadas verticalmente */
 .split-screen__left {
-  background-color: var(--cor-neutra);
-  flex: 1; 
-  height: 100%;
-  padding: 0; 
+  background-image: url(../assets/Images/ImagemLivrosLogin.jpg);
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
 }
 
 .split-screen__right {
@@ -23,26 +23,6 @@
   gap: 2rem;
   background-color: var(--cor-neutra);
   
-}
-
-/* Em telas maiores, elas são exibidas lado a lado */
-
-.imagem{
-
-    position: relative;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-    
-}
-
-.imagem img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    display: block;
 }
 
 .imagem-sombra {
@@ -81,11 +61,9 @@
 }
 
 .logo_projeto{
-
   width: 12rem;
   position: relative;
-  margin-bottom: 3rem;
-
+  margin-bottom: 1rem;
 }
 
 .fonte{
@@ -200,4 +178,17 @@
 
 .btn-link:hover {
     color: #145252;
+}
+
+.botao-home{
+  color: var(--cor-ciano);
+  font-weight: 800;
+  font-size: medium;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin-left: auto;
+  gap: 0.3rem;
 }
