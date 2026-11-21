@@ -5,13 +5,14 @@ import { Plus } from 'lucide-react';
 import '../styles/TelaBusca.css'
 import CardLivro from '../components/CardLivro'
 import { BuscaContext } from '../components/TelaLateral' /*Importando o que já existe na tela lateral */
+import TelaAdicionarLivros from '../components/TelaAdicionarLivros'
 
 export default function TelaBusca(){
 
     const [livros, setLivros] = useState([]);
     const { busca } = useContext(BuscaContext)
     const {usuario} = useAuth();
-    
+    const [TelaAddAberto, setTelaAddAberto] = useState(false)
 
 
     useEffect(() => {
@@ -36,7 +37,7 @@ export default function TelaBusca(){
                         {busca ? 'Resultados da pesquisa' : 'Veja os livros da nossa biblioteca'}
                     </h1>
                     {usuario?.perfil  === 'bibliotecario' && (
-                            <button className='botao-add'><Plus/></button>
+                            <button className='botao-add' onClick={() => setTelaAddAberto(true)}><Plus/></button>
                         ) 
                     }
 
@@ -55,7 +56,12 @@ export default function TelaBusca(){
                     <CardLivro  key={livro.livro_id} livro = {livro} onEmprestar={BuscarLivros}/>
                 ))}
             
-
+            {TelaAddAberto && (
+                <TelaAdicionarLivros
+                    onSalvar={() => BuscarLivros()}
+                    onClose={() => setTelaAddAberto(false)}
+                />
+            )}
             
         </div>
         
