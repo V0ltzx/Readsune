@@ -3,7 +3,7 @@ import '../styles/CardLivro.css'
 import { ArrowRight } from 'lucide-react'
 import ModalDetalhes from './ModalDetalhes';
 
-export default function CardLivro( {livro, onEmprestar} ){
+export default function CardLivro( {livro, onEmprestar, onExcluir} ){
 
     const [modalAberto, setModalAberto] = useState(false);
 
@@ -32,7 +32,7 @@ export default function CardLivro( {livro, onEmprestar} ){
         </div>
 
         {modalAberto &&(
-            <ModalDetalhes livro={livro} onClose={() => setModalAberto(false)} onEmprestar={onEmprestar}/>
+            <ModalDetalhes livro={livro} onClose={() => setModalAberto(false)} onEmprestar={onEmprestar} onExcluir={onExcluir}/>
         )}
 
         </>

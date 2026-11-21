@@ -15,6 +15,10 @@ class AuthController extends Controller
             'nome'           => ['required', 'string', 'max:100'],
             'email'          => ['required', 'email', 'max:100', 'unique:usuarios,email'],
             'senha'          => ['required', 'string', 'min:8']
+        ], [
+            'senha.min'      => 'A senha deve ter no mínimo :min caracteres.',
+            'nome.max'       => 'O nome deve ter no máximo :max caracteres.',
+            'email.unique'   => 'Este email já esta cadastrado.'
         ]);
 
         $usuario = Usuario::create([

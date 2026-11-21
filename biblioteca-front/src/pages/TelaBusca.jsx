@@ -53,7 +53,7 @@ export default function TelaBusca(){
             
             {livros.map((livro) => (
                     
-                    <CardLivro  key={livro.livro_id} livro = {livro} onEmprestar={BuscarLivros}/>
+                    <CardLivro  key={livro.livro_id} livro = {livro} onEmprestar={BuscarLivros} onExcluir={BuscarLivros}/>
                 ))}
             
             {TelaAddAberto && (

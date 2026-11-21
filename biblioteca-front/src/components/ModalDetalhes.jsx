@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import interrogacao from '../assets/interrogacao.jpg'
 import api from '../api/client';
 
-export default function ModalDetalhes({ livro, onClose, onEmprestar }) {
+export default function ModalDetalhes({ livro, onClose, onEmprestar , onExcluir}) {
 
     const {usuario} = useAuth();
     const [emprestando, setEmprestando] = useState(false);
@@ -37,7 +37,8 @@ export default function ModalDetalhes({ livro, onClose, onEmprestar }) {
             console.log(err?.message ?? 'Não foi possível excluir o livro');
         } finally{
             setExcluindo(false);
-            onClose()
+            onExcluir();
+            onClose();
         }
     }
 

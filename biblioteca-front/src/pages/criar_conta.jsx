@@ -10,6 +10,7 @@ export default   function CriarConta(){
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [criando, setCriando] = useState(false);
     const [erro, setErro] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
     const { registrar } = useAuth();
@@ -19,8 +20,10 @@ export default   function CriarConta(){
      async function handleSubmit(e) {
         e.preventDefault(); 
         setErro(null);
+        setCriando(true);
         try{
             await registrar(nome, email, senha);
+            setCriando(false);
             navigate('/home');
         } catch (err) {
             setErro(err?.response?.data?.message ?? "E-mail ou senha inválidos.");
@@ -116,7 +119,7 @@ export default   function CriarConta(){
                     <div className='coluna-grupo'>
                         <button 
                         type='submit' 
-                        className='btn btn--primaria btn--conta'> Criar Conta </button>
+                        className='btn btn--primaria btn--conta'> {criando ? "Criando..." : "Criar conta" } </button>
                     </div>
 
                     <button className='btn-link' onClick={() => navigate('/login')}>
