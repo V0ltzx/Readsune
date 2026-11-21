@@ -27,9 +27,8 @@ export default   function CriarConta(){
     try{
         await registrar(nome, email, senha);
         navigate('/home');
-
     } catch (err) {
-        setErro("E-mail ou senha inválidos.");
+        setErro(err?.response?.data?.message ?? "E-mail ou senha inválidos.");
     }
 
     }   
@@ -62,6 +61,7 @@ export default   function CriarConta(){
                 <img src={logo} alt='logo do projeto' className='logo_projeto'/>
                 <h1 className='fonte'> Criar Conta </h1>
                 <p>Seu espaço para descobrir e guardar novas leituras.</p>
+                {erro && <p style={{ color: 'red' }}>{erro}</p>}
             </div>    
                 
             
@@ -109,14 +109,14 @@ export default   function CriarConta(){
                             required
                             />
                         
-                        <button
-                            type='button'
-                            className='btn-olho'
-                            onClick={() => setShowPassword((prev) => !prev)}
-                            aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
-                        
-                            > 
-                            {showPassword ? (<Eye />) : (<EyeOff />)} 
+                            <button
+                                type='button'
+                                className='btn-olho'
+                                onClick={() => setShowPassword((prev) => !prev)}
+                                aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                            
+                                > 
+                                {showPassword ? (<Eye color='#60747B'/>) : (<EyeOff color='#60747B'/>)} 
                             </button>
                       </div>
                     </div>
@@ -127,9 +127,7 @@ export default   function CriarConta(){
                         type='submit' 
                         className='btn btn--primaria btn--conta'> Criar Conta </button>
                     </div>
-            
-                    {erro && <p style={{ color: 'red' }}>{erro}</p>}
-                    
+
                      <button className='btn-link' onClick={() => navigate('/login')}>
                         Ainda não possui conta? Criar conta
 
