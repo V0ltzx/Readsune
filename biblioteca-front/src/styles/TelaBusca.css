@@ -1,0 +1,38 @@
+.tela{
+    display: grid;
+    width: 100%;
+    gap: 2rem;
+
+}
+
+.titulo{
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+.texto-menor{
+    color: var(--cor-texto-mutado);
+    font-size: 0.8rem;
+}
+.titulo-menor-topo{
+    font-size: 0.8rem;
+    color: var(--cor-ciano);
+    font-weight: 600;
+}
+
+.area-titulo-botao{
+    display: flex;
+    justify-content: space-between;
+    align-items: ceneter;
+}
+
+.botao-add{
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border-radius: 4rem;
+    align-items: center;
+    
+}
+

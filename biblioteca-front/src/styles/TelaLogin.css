@@ -1,0 +1,138 @@
+/* ---------- Grid ---------- */
+.login-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 2fr;
+    min-height: 100vh;
+}
+
+/* ---------- Lado da imagem ---------- */
+.login-imagem {
+    display: flex;
+    align-items: flex-end;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-imagem__texto {
+    width: 100%;
+    padding: 3rem;
+    /* escurece o fundo para o texto branco ficar legível */
+    background: linear-gradient(to top, rgba(21, 28, 55, 0.85), transparent);
+}
+
+.login-imagem__titulo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--cor-branco);
+}
+
+.login-imagem__subtitulo {
+    color: var(--cor-primaria-claro);
+}
+
+/* ---------- Lado do formulário ---------- */
+.login-lado-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 6rem;
+    background-color: var(--cor-neutra);
+}
+
+.login-form {
+    display: grid;
+    gap: 1.5rem;
+    width: 100%;
+    
+}
+
+.login-logo {
+    height: 3rem;
+    width: auto;
+}
+
+.logo-area{
+    justify-content: center;
+}
+
+.login-titulo {
+    font-size: 2.25rem;
+    font-weight: 700;
+}
+
+.login-subtitulo {
+    color: var(--cor-texto-mutado);
+}
+
+/* ---------- Campos ---------- */
+.login-campo {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.login-campo label {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.login-input {
+    width: 100%;
+    height: 3.25rem;
+    padding: 0 1rem;
+    border: 2px solid #D4E6E9;
+    border-radius: 12px;
+    background-color: var(--cor-branco);
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: var(--cor-ciano);
+}
+
+.login-olho {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    display: flex;
+    color: var(--cor-texto-mutado);
+}
+
+/* ---------- Links e botão ---------- */
+.login-link {
+    color: var(--cor-ciano);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: underline;
+    justify-self: center;
+}
+
+.login-link--direita {
+    justify-self: end;
+}
+
+.login-botao {
+    justify-content: center; /* o .btn global alinha à esquerda */
+    height: 3.25rem;
+}
+
+.login-botao:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.botao-home{
+  color: var(--cor-ciano);
+  font-weight: 800;
+  font-size: medium;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin-left: auto;
+  gap: 0.3rem;
+}
