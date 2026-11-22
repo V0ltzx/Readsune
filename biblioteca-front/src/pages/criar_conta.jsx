@@ -21,18 +21,28 @@ export default   function CriarConta(){
     const navigate = useNavigate();
 
 
-     async function handleSubmit(e) {
-        e.preventDefault(); 
-        setErro(null);
-    try{
-        await registrar(nome, email, senha);
-        navigate('/livros');
+async function handleSubmit(e) {
+  e.preventDefault();
+  setErro(null);
 
-    } catch (err) {
-        setErro("E-mail ou senha inválidos.");
+  try {
+    await registrar(nome, email, senha);
+    navigate('/home');
+  } catch (err) {
+    const mensagemApi =
+      err.response?.data?.message ||
+      err.response?.data?.erro ||
+      err.response?.data?.detail;
+
+    if (mensagemApi) {
+      setErro(mensagemApi);
+    } else if (!err.response) {
+      setErro("Não foi possível conectar ao servidor. Tente novamente.");
+    } else {
+      setErro("Não foi possível criar a conta. Verifique os dados informados.");
     }
-
-    }   
+  }
+}   
 
     return(
 
@@ -118,9 +128,13 @@ export default   function CriarConta(){
                             > 
                             {showPassword ? (<Eye />) : (<EyeOff />)} 
                             </button>
+                      
+                            
                       </div>
                     </div>
-            
+                    
+                    
+                        {erro && <p style={{ color: 'red' }}>{erro}</p>}
 
                     <div className='coluna-grupo'>
                         <button 
@@ -128,13 +142,15 @@ export default   function CriarConta(){
                         className='btn btn--primaria btn--conta'> Criar Conta </button>
                     </div>
             
-                    {erro && <p style={{ color: 'red' }}>{erro}</p>}
                     
-                     <button className='btn-link' onClick={() => navigate('/login')}>
+                    
+                     <button type="button" className='btn-link' onClick={() => navigate('/login')}>
                         Ainda não possui conta? Criar conta
 
                    </button>
-            
+
+                    
+
                  </form>
                   
 

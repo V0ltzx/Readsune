@@ -1,0 +1,102 @@
+/*  Container e Topo  */
+
+.inicial {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.inicial-topo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.inicial-topo h1 {
+    color: #000;
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 1.3;
+}
+
+/*  Conteúdo Central  */
+
+.inicial-conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.25rem;
+}
+
+.inicial-conteudo-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-neutra);
+    border-radius: 1.6rem;
+    padding: 1.5rem;
+    color: var(--cor-ciano);
+}
+
+.inicial-conteudo-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 540px;
+}
+
+.inicial-conteudo-info h2 {
+    color: #000;
+    font-weight: 800;
+    font-size: 1.75rem;
+    line-height: 1.3;
+}
+
+.inicial-conteudo-info p {
+    color: var(--cor-texto-mutado);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* ---------- Ações / Botões ---------- */
+
+.btn-inicial {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.home__botao {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    color: var(--cor-ciano);
+    font-size: 1rem;
+    font-weight: 600;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.home__botao:hover {
+    text-decoration: underline;
+}
+
+.separador {
+    color: var(--cor-texto-mutado);
+    user-select: none;
+}
