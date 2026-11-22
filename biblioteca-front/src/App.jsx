@@ -1,7 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
-import Login from './pages/old/Login';
-import LivroAdd from './pages/old/livro_add';
 import TelaBusca from './pages/TelaBusca';
 import Emprestimo from './pages/Emprestimos'
 import TelaLateral from './components/TelaLateral';
@@ -13,7 +11,7 @@ export default function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={null} />
+        <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/livros" 
           element={
             <TelaLateral>
@@ -22,7 +20,6 @@ export default function App() {
             
           } 
         />
-
         <Route path='emprestimos'
           element={
             <TelaLateral>
@@ -32,10 +29,9 @@ export default function App() {
           />
         <Route path="/cadastro" element={<CriarConta />} />
         <Route path="/login" element={<TelaLogin />} />
-        <Route path="/livro_add" element={<LivroAdd />} />
         <Route path="/home" element={
           <TelaLateral>
-          <TelaInicial />
+            <TelaInicial />
           </TelaLateral>
         } />
       </Routes>
@@ -43,3 +39,4 @@ export default function App() {
       
   );
 }
+
