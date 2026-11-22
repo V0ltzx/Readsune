@@ -1,77 +1,61 @@
 import '../styles/CriarConta.css'
-import hatsune from '../assets/Images/mikuconta.svg'
 import logo from   '../assets/Images/Logo.svg'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react"
-import {Eye, EyeOff} from 'lucide-react'
+import {Eye, EyeOff, ArrowLeft} from 'lucide-react'
 import { useAuth } from "../contexts/AuthContext";
-
-
-
-
 
 export default   function CriarConta(){
 
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [criando, setCriando] = useState(false);
     const [erro, setErro] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
     const { registrar } = useAuth();
     const navigate = useNavigate();
 
 
-async function handleSubmit(e) {
-  e.preventDefault();
-  setErro(null);
-
-  try {
-    await registrar(nome, email, senha);
-    navigate('/home');
-  } catch (err) {
-    const mensagemApi =
-      err.response?.data?.message ||
-      err.response?.data?.erro ||
-      err.response?.data?.detail;
-
-    if (mensagemApi) {
-      setErro(mensagemApi);
-    } else if (!err.response) {
-      setErro("Não foi possível conectar ao servidor. Tente novamente.");
-    } else {
-      setErro("Não foi possível criar a conta. Verifique os dados informados.");
-    }
-  }
-}   
+     async function handleSubmit(e) {
+        e.preventDefault(); 
+        setErro(null);
+        setCriando(true);
+        try{
+            await registrar(nome, email, senha);
+            setCriando(false);
+            navigate('/home');
+        } catch (err) {
+            setErro(err?.response?.data?.message ?? "E-mail ou senha inválidos.");
+        }
+    }   
 
     return(
 
     <div className='split-screen'>
         <div className='split-screen__left'>
-            <div className='imagem'>
-                <img src={hatsune} alt="Imagem de vários livros."/>
-            
-                <div className='imagem-sombra'></div>
+            <div className='imagem-sombra'></div>
 
-
-                
-                <div className='imagem-texto'>
-                    <h2>Seu espaço para novas histórias.</h2>
-                    <p>Uma leitura de cada vez.</p>
-                </div>
+            <div className='imagem-texto'>
+                <h2>Seu espaço para novas histórias.</h2>
+                <p>Uma leitura de cada vez.</p>
             </div>
+
             
         </div>
 
         <div className='split-screen__right'>  
-            
-                
-            
-                
+
             <div className='blocktext'>
+                <button className='botao-home' onClick={() => navigate('/home')}>
+                    <ArrowLeft />Vá até a página home 
+                </button>
+
                 <img src={logo} alt='logo do projeto' className='logo_projeto'/>
+                
                 <h1 className='fonte'> Criar Conta </h1>
                 <p>Seu espaço para descobrir e guardar novas leituras.</p>
+                {erro && <p style={{ color: 'red' }}>{erro}</p>}
             </div>    
                 
             
@@ -119,57 +103,33 @@ async function handleSubmit(e) {
                             required
                             />
                         
-                        <button
-                            type='button'
-                            className='btn-olho'
-                            onClick={() => setShowPassword((prev) => !prev)}
-                            aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
-                        
-                            > 
-                            {showPassword ? (<Eye />) : (<EyeOff />)} 
-                            </button>
-                      
+                            <button
+                                type='button'
+                                className='btn-olho'
+                                onClick={() => setShowPassword((prev) => !prev)}
+                                aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
                             
+                                > 
+                                {showPassword ? (<Eye color='#60747B'/>) : (<EyeOff color='#60747B'/>)} 
+                            </button>
                       </div>
                     </div>
-                    
-                    
-                        {erro && <p style={{ color: 'red' }}>{erro}</p>}
+            
 
                     <div className='coluna-grupo'>
                         <button 
                         type='submit' 
-                        className='btn btn--primaria btn--conta'> Criar Conta </button>
+                        className='btn btn--primaria btn--conta'> {criando ? "Criando..." : "Criar conta" } </button>
                     </div>
+
+                    <button className='btn-link' onClick={() => navigate('/login')}>
+                        Já possui uma conta? Entrar
+                    </button>
             
-                    
-                    
-                     <button type="button" className='btn-link' onClick={() => navigate('/login')}>
-                        Ainda não possui conta? Criar conta
-
-                   </button>
-
-                    
-
                  </form>
                   
-
-
             </div>
-
-                           
-            </div>
-          
             
-            
-
-            
-
-
-
-
+        </div>
     )
-
-
-
 }

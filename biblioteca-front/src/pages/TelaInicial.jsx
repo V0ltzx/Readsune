@@ -10,7 +10,7 @@ export default function TelaInicial() {
     return (
         <div className='inicial'>
             <div className='inicial-topo'>
-                <div className='home__topo'>
+                <div className='eyebrow'>
                     SUA BIBLIOTECA DIGITAL
                 </div>
 
