@@ -112,7 +112,7 @@
     position: relative;
     height: 3rem;
     padding-inline: 1rem;
-    font-size: 800;
+    font-weight: 800;
     transform: translateY(-100%);
     top: 50%;
 }
