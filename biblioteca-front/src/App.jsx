@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import TelaBusca from './pages/TelaBusca';
 import Emprestimo from './pages/Emprestimos'
 import TelaLateral from './components/TelaLateral';
@@ -9,7 +9,6 @@ import CriarConta from './pages/criar_conta';
 import TelaInicial from './pages/TelaInicial';
  
 export default function App() {
-  const Navigate = useNavigate();
 
   return (
     <AuthProvider>
